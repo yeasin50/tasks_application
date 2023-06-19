@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:task_list_app/app_navigation_bar.dart';
-import 'package:task_list_app/common/app_style.dart';
-import 'package:task_list_app/pages/tasks/widgets/task_details_widget.dart';
-import 'package:task_list_app/pages/tasks/widgets/tasks_list_widget.dart';
-import 'package:task_list_app/service/network_service.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../common/app_style.dart';
 import '../../../common/layout_wrapper.dart';
 import '../../../model/task.dart';
+import '../providers/selected_task_prover.dart';
+import '../widgets/task_details_widget.dart';
+import '../widgets/tasks_list_widget.dart';
 
 class TasksPage extends StatelessWidget {
-  const TasksPage({Key? key}) : super(key: key);
+  const TasksPage({
+    Key? key,
+    this.selectedTaskID,
+  }) : super(key: key);
 
+  final String? selectedTaskID;
   @override
   Widget build(BuildContext context) {
     var title = Padding(
@@ -23,6 +27,7 @@ class TasksPage extends StatelessWidget {
         ),
       ),
     );
+
     return AppLayoutWrapper(
       childBuilder: (constraints) {
         return [
@@ -45,22 +50,42 @@ class TasksPage extends StatelessWidget {
           ),
           SizedBox(width: 4),
           // right section
-          Expanded(
-            child: ColoredBox(
-              color: AppStyle.canvasColor,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TaskDetails(
-                  task: Task(
-                    id: '1',
-                    title: 'title',
-                    dateTime: DateTime.now(),
-                    description: 'description',
-                  ),
+          if (selectedTaskID != null)
+            Expanded(
+              child: ColoredBox(
+                color: AppStyle.canvasColor,
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    final task = ref.watch(
+                      selectedTaskProvider(selectedTaskID),
+                    );
+
+                    if (task == null) {
+                      return Center(
+                        child: Text(
+                          "Task not found", //todo: label should be in app localization file
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      );
+                    } else
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: TaskDetails(task: task),
+                            ),
+                          ],
+                        ),
+                      );
+                  },
                 ),
               ),
             ),
-          ),
         ];
       },
     );

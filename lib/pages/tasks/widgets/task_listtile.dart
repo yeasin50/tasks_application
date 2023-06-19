@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:task_list_app/model/task.dart';
 import 'package:task_list_app/common/app_style.dart';
@@ -30,7 +31,9 @@ class TaskListTile extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        onTap: () {},
+        onTap: () {
+          context.go('/tasks/${task.id}');
+        },
         title: Text(task.title ?? ''),
         trailing: Text(dateString),
       ),

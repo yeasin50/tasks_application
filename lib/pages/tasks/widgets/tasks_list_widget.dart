@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../providers/task_providers.dart';
+import '../providers/tasks_provider.dart';
 import 'task_listtile.dart';
 
 /// render a list of tasks on ListView from
