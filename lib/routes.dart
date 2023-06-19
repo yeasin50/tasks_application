@@ -8,6 +8,7 @@ import 'pages/teams/_view/teams_page.dart';
 final ValueKey _tasksPageKey = ValueKey('TasksPage');
 final routeConfig = GoRouter(
   initialLocation: '/tasks',
+  
   routes: [
     GoRoute(
       path: '/tasks',

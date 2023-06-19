@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/layout_wrapper.dart';
@@ -12,7 +13,7 @@ class ProjectsPage extends StatelessWidget {
         return [
           Expanded(
             child: Align(
-              child: Text('Projects'),
+              child: Text('Projects'.tr()),
             ),
           ),
         ];

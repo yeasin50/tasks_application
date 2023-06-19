@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -20,7 +21,7 @@ class TasksPage extends StatelessWidget {
     var title = Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        "Title", //todo: label should be in app localization file
+        "Tasks".tr(),
         style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
