@@ -5,14 +5,14 @@ import 'pages/tasks/_view/tasks_page.dart';
 import 'pages/teams/_view/teams_page.dart';
 
 final routeConfig = GoRouter(
-  initialLocation: '/tasks/1',
+  initialLocation: '/tasks',
   routes: [
     GoRoute(
-      path: '/tasks/:id',
+      path: '/tasks',
       builder: (context, state) => TasksPage(),
     ),
     GoRoute(
-      path: '/projects/:id',
+      path: '/projects',
       builder: (context, state) => ProjectsPage(),
     ),
     GoRoute(
