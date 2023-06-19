@@ -10,9 +10,10 @@ class ProjectsPage extends StatelessWidget {
     return AppLayoutWrapper(
       childBuilder: (constraints) {
         return [
-          Center(
-            // TODO: labels should be in app localization file
-            child: Text('Projects'),
+          Expanded(
+            child: Align(
+              child: Text('Projects'),
+            ),
           ),
         ];
       },

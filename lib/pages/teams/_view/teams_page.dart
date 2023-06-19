@@ -10,9 +10,11 @@ class TeamsPage extends StatelessWidget {
     return AppLayoutWrapper(
       childBuilder: (constraints) {
         return [
-          Center(
-            // TODO: labels should be in app localization file
-            child: Text('Teams'),
+          Expanded(
+            child: Align(
+              // TODO: labels should be in app localization file
+              child: Text('Teams'),
+            ),
           ),
         ];
       },
