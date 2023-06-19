@@ -25,7 +25,7 @@ class AppLayoutWrapper extends StatelessWidget {
               children: [
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: width > 250 ? 250 : width, //todo: for smaller device use menu button
+                    maxWidth: width > 250 ? 250 : double.infinity, //todo: for smaller device use menu button or drawer
                   ),
                   child: AppNavigationBar(),
                 ),

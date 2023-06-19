@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.grey[200],
       ),
       routerConfig: routeConfig,
     );
